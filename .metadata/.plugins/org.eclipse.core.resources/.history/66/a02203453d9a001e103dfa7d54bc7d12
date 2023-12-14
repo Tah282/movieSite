@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cgv.mapper.TicketingMapper">
+
+	<select id="getMovieList" resultType="com.cgv.vo.Movie">
+		SELECT * FROM movie where movieScreening="상영중" OR movieScreening="재개봉" ORDER BY movieRating desc
+	</select>
+	
+	<select id="checkSeat" resultType="Integer" parameterType="com.cgv.vo.Ticketing">
+		SELECT seat FROM ticketing where movieNum=#{movieNum} AND theater=#{theater} AND date=#{date} ORDER BY seat 
+	</select>
+	
+</mapper>

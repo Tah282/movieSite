@@ -1,0 +1,43 @@
+package com.cgv.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cgv.mapper.MovieMapper;
+import com.cgv.mapper.TicketingMapper;
+import com.cgv.vo.Movie;
+
+@RequestMapping("/ticketing")
+@Controller
+public class TicketingController {
+
+	@Autowired
+	private TicketingMapper mapper;
+	
+	@GetMapping(value="/ticketingForm.do")
+	public String ticketingForm (Model model) {	
+		
+		List<Movie> list = mapper.getMovieList();
+		model.addAttribute("movieList",list);
+		
+		return "ticketing/ticketingForm";
+	}
+	
+	@GetMapping(value="/ticketingPro.do")
+	public String ticketingPro(HttpServletRequest request) {
+		
+		String m = request.getParameter("movieNum");
+		
+		System.out.println(m+"일단 여기까지 성공했어");
+		
+		return "";
+	}
+	
+}

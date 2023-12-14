@@ -1,0 +1,587 @@
+@charset "UTF-8";
+
+.center { 
+	margin: 0 auto; 
+	display: table;
+}
+
+/* ============== nav.jsp ===============  */
+table, tr, td {
+    /* border: 1px solid #333333; */
+    border-collapse: collapse;
+    border:none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+#headerTable1 {
+    width: 1050px;
+    height: 37px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+}
+.header1-space {
+    width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+.header1-menu {
+    width: 100px;
+    cursor: pointer;
+}
+.logo {
+    cursor: pointer;
+    height: 140px;
+    width: 140px;
+}
+.loginLogo {
+    cursor: pointer;
+    height: 60px;
+    width: 100px;
+}
+.logoutLogo {
+    cursor: pointer;
+    height: 60px;
+    width: 100px;
+}
+.registerLogo {
+    cursor: pointer;
+    height: 60px;
+    width: 90px;
+}
+.myinfoLogo {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+}
+.callcenterLogo {
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+}
+.header1-text {
+    width:350px;
+    font-size:15px;
+}
+
+/* header2 */
+#headerTable2 {
+    width: 1050px;
+    height: 63px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight:bolder;
+    border-bottom: 2px solid red;
+}
+.header2-menu{
+    cursor: pointer;
+    
+}
+.header2-space{
+    width : 100px;
+}
+.searchLogo {
+    width: 20px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* advertBlock */
+#advertDiv {
+    background: #353535;
+    height:450px;
+}
+#advertTable{
+    width: 1050px;
+    height: 63px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ==================== banner.jsp ======================== */
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+/*   margin-top: 0; */
+  text-align: center;
+  background: #353535;
+}
+
+.bannerImg {
+	width: 1050px;
+    height: 449px;
+}
+
+/* effect */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Next & previous buttons */
+.prev  {
+  cursor: pointer;
+  position: absolute;
+  top: 32%;	
+  left: 10px;
+  width: 500px;
+  padding: 16px;
+  margin-top: -22px;
+  color: dimgray;
+
+  font-size: 120px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+.next  {
+  cursor: pointer;
+  position: absolute;
+  top: 32%;	
+  right: 10px;
+  width: 500px;
+  padding: 16px;
+  margin-top: -22px;
+  color: dimgray;
+
+  font-size: 120px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/*============ loginForm ===================*/
+#loginTable {
+    margin: 0 auto;
+}
+.login-header {
+    color: #ff5232; 
+    font-size: 20px; 
+    font-weight: bold; 
+    text-align: center;
+    height: 100px;
+}
+.login-id {
+    width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.login-pw {
+    width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.login-sub {
+    font-size: 13px;
+    color: #b54427;
+    text-align: right;
+    padding-bottom: 20px;
+}
+.login-td {
+    text-align: center;
+    height: 60px;
+}
+.login-btn {
+    border-style: none;
+    width: 370px;
+    height: 54px;
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: #ff4500;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.join-btn {
+    border-style: none;
+    width: 370px;
+    height: 54px;
+    color: #b54427;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #b54427;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* ============= 회원가입 ========================== */
+.join-title{
+	margin: 0 auto;
+	text-align: center;
+	border:none;
+}
+.joinTable{
+	margin: 0 auto;
+}
+.join-id{
+	width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border:none;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.join-pw{
+	width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.join-pwCheck{
+	width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.join-name{
+	width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+.join-email{
+	width: 340px;
+    height: 54px;
+    padding: 0px 11px 1px 15px;
+    border-style: none;
+    border: 1px solid #B5B5B5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+/* ============= 영화 리스트 ========================*/
+/* movieList */
+#listDiv{
+    background: #e9e9e9;
+    height:450px;
+    max-width: 100%;
+}
+#listTable{
+    width: 1050px;
+    height: 63px;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 10px 10px;
+}
+#listTable td{
+    width: 210px;
+}
+.chartspace1{
+    height:30px;
+}
+.chartspace2{
+    height:7px;
+}
+.listspace{
+    width:200px;
+}
+
+#chartList{
+    text-align:center;
+    width:100px;
+    font-size: 30px;
+    font-weight:bolder;
+    cursor: pointer;
+}
+#openList{
+    text-align:right;
+    width:130px;
+    font-size: 30px;
+    font-weight:bolder;
+    cursor: pointer;
+    /*color:Gray;*/
+}
+#allList{
+    text-align:right;
+    font-size: 20px;
+    font-weight:bolder;
+    cursor: pointer;
+}
+.chart-img{
+	width: 150px;
+  	height: 240px;
+  	object-fit: cover;
+}
+.rating-img{
+	width: 18px;
+  	height: 18px;
+  	object-fit: cover;
+}
+.chartMovieName{
+	font-weight:bolder;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 198px;
+	align:center;
+}
+.chartMovieInfo{
+	text-align:center;
+}
+
+/* ====================== 영화 상세 정보 =========================*/
+
+.movieInfo{
+	margin: 0 auto; 
+	display: table;
+}
+
+.movieInfoTable{
+	width: 1050px;
+    height: 290px;
+    margin: 0 auto;
+}
+
+.InfoImg_td{
+	text-align : center;
+	width: 400px;
+}
+
+.Info-img{
+	width: 180px;
+	height: 290px;
+}
+
+.InfoTitle{
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.InfoData{
+	line-height:24px;
+}
+
+.Ticketing-btn{
+	border-style: none;
+    width: 280px;
+    height: 54px;
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: #ff4500;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ============== movieTotalList ==================*/
+#totalListDiv{
+	max-width: 100%;
+}
+#titleTable{
+	width: 1050px;
+    height: 150px;
+    margin: 0 auto;
+}
+#totalTable{
+	width: 1050px;
+    height: 63px;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 50px 10px;
+}
+#chartTotal{
+	text-align:right;
+	font-size: 12px;
+}
+#openTotal{
+	text-align:center;
+	font-size: 12px;
+}
+.tagNum{
+	color:white;
+    font-size:17px;
+    font-weight:bolder;
+    background-color:red;
+    height:27px;
+    width:200px;
+}
+.listImg{
+	width:200px;
+    height: 250px;
+}
+.img-td{
+	width:200px;
+    height: 250px;
+}
+.img-name{
+	font-weight:bolder;
+	overflow: hidden;
+  	white-space: nowrap;
+ 	text-overflow: ellipsis;
+ 	word-break: break-all;
+ 	width:200px;
+}
+
+/* ============= 고객센터 =====================*/
+.board-center{
+	margin: 0 auto; 
+	display: table;
+	text-align: center;
+}
+.board-title{
+	width:700px;
+}
+.boardTitle{
+	text-align:center;
+}
+.board-td{
+	text-align:right;
+}
+.board-content{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	width:700px;
+	
+}
+.board-content2{
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	background-color: #e9e9e9;
+	height: 35px;
+	font-weight:bolder;
+}
+.board-content3{
+	padding: 10px 0;
+}
+
+/* 고객센터 글 조회 */
+.boardInfo-table{
+	margin: 0 auto; 
+	display: table;
+	text-align: center;
+	width:700px;
+}
+.boardInfo-title{
+	border-top: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	background-color: #e9e9e9;
+	height: 35px;
+	font-weight:bolder;
+}
+.boardInfo-data{
+	border-top: 1px solid black;
+	margin: 0 auto; 
+	text-align: right;
+	background-color: #e9e9e9;
+	height: 35px;
+	font-size:12px;
+}
+.boardInfo-writer{
+	text-align: right;
+}
+.boardInfo-content{
+	text-align: left;
+}
+.boardInfo-space{
+	height:30px;
+}
+.boardInfo-space2{
+	height:21px;
+	border-bottom: 1px solid black;
+}
+
+/* ============= ticketingForm =============== */
+.ticketingList{
+	background-color: gray;
+    width: 1000px;
+    height: 350px;
+    margin: 0 auto; /* container 영역을 브라우저에서 가운데 정렬하기 위해 auto설정 */
+    text-align: center; /* inline-block화 된 div들을 텍스트 마냥 center로 정렬*/
+	overflow: scroll;
+	overflow: auto;
+	white-space: nowrap;
+}
+
+.movieDiv{
+	display: inline-block; /* 가로로 나열하기 위해 block레벨 요소를 inline-block레벨로 전환 */
+    width: 200px; /* 영역 크기 지정 안해주면 inline 레벨처럼 내용물 만큼만 차지하기 때문에 크기 지정 */
+    height: 200px; /* 영역 크기 지정 안해주면 inline 레벨처럼 내용물 만큼만 차지하기 때문에 크기 지정 */
+
+}
+
+.ticketingFormTitle{
+	font-family: 'Black Han Sans', serif;
+	font-size: 40px;
+}
+
+/* ======================= ticketingTheaterForm ============================= */
+.ticketingTheater{
+	width: 1000px;
+    height: 150px;  
+}
+.ticketingTable{
+	width: 1000px;
+	border-bottom: solid 1px black;
+	border-top: solid 1px black;
+}
+.regionTitle{
+	border-bottom: solid 1px black;
+	border-top: solid 1px black;
+	background-color: #EBAA5F;
+	height: 50px;
+	font-weight:bolder;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

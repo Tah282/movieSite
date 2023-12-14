@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cgv.mapper.BoardMapper">
+	
+	<select id="getAllCount" resultType="Integer">
+		SELECT count(*) FROM board
+	</select>
+	
+	<select id="getAllBoard" parameterType="com.cgv.vo.Board" resultType="com.cgv.vo.Board">
+		SELECT * FROM board 
+		ORDER BY ref DESC, re_level LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getMaxRef" resultType="Integer">
+		SELECT MAX(ref) FROM board
+	</select>
+	
+	<insert id="boardWrite" parameterType="com.cgv.vo.Board">
+		INSERT INTO board(writer, email, subject, reg_date, ref, re_step, re_level, readcount, content)
+		VALUES(#{writer}, #{email}, #{subject}, now(), #{ref}, 1, 1, 0, #{content});
+	</insert>
+	
+	<update id="updateBoardReadCount" parameterType="int">
+		UPDATE board SET readcount = readcount+1 WHERE num = #{num}
+	</update>
+	
+	<select id="getOneBoard" parameterType="int" resultType="com.cgv.vo.Board">
+		SELECT * FROM board WHERE num = #{num}
+	</select>
+	
+	<update id="updateBoard" parameterType="com.cgv.vo.Board">
+		UPDATE board SET email=#{email}, subject=#{subject}, content=#{content} 
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="boardDelete" parameterType="Integer">
+		DELETE FROM board WHERE num=#{num}
+	</delete>
+	
+	<update id="updateReBoard" parameterType="com.cgv.vo.Board">
+		UPDATE board SET re_level=re_level+1 WHERE ref=#{ref} AND re_level > #{re_level}
+	</update>
+	
+	<insert id="reWriteBoard" parameterType="com.cgv.vo.Board">
+		INSERT INTO board (writer, email, subject, reg_date, ref, re_step, re_level, readcount, content)
+		VALUES(#{writer}, #{email}, #{subject}, now(), #{ref}, #{re_step} + 1, #{re_level} + 1, 0, #{content})
+	</insert>
+	
+</mapper>

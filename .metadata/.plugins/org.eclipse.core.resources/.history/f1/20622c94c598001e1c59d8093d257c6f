@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div class="ticketingTheater">
+		<table class="ticketingTable">
+			<tr class="regionTitle">
+				<td class="region" onclick="checkRegion(${0})">서울</td> <td class="region" onclick="checkRegion(${1})">파주</td> <td class="region" onclick="checkRegion(${2})">대구</td> <td class="region" onclick="checkRegion(${3})">부산/울산</td> 
+			</tr>
+			
+			<tr class="regionInfo" style="display:block;">
+				<td>홍대</td> <td>용산</td> <td>강남</td>
+			</tr>
+
+			<tr class="regionInfo" style="display:none;">
+				<td>야당</td> <td>금촌</td>
+			</tr>
+
+			<tr class="regionInfo" style="display:none;">
+				<td>대구스타디움</td> <td>죽전</td>
+			</tr>
+
+			<tr class="regionInfo" style="display:none;">
+				<td>해운대</td> <td>울산삼산</td> <td>서면</td>
+			</tr>
+
+		</table>
+	</div>
+	
+</body>
+</html>
