@@ -31,10 +31,10 @@
 		<table class="board-content">
 			<tr>
 				<td class="board-content2">번호</td>
-				<td class="board-content2">제목</td>
+				<td class="board-content2_1">제목</td>
 				<td class="board-content2">작성자</td>
-				<td class="board-content2">작성일</td>
-				<td class="board-content2">조회수</td>
+				<td class="board-content2_1">작성일</td>
+				<td class="board-content2_1">조회수</td>
 			</tr>
 		<c:forEach var="board" items="${boardList}">
 			<tr>
@@ -46,11 +46,21 @@
 						</c:forEach>
 						[답글]
 					</c:if>
-					<a href="${contextPath}/board/boardInfo.do?num=${board.num}">${board.subject}</a>
+					<a href="${contextPath}/board/boardInfo.do?num=${board.num}&writer=${board.writer}">${board.subject}</a>
 				</td>
-				<td class="board-content3">${board.writer}</td>
-				<td class="board-content3">${board.reg_date}</td>
-				<td class="board-content3">${board.readcount}</td>
+				
+			<c:choose>
+				
+				<c:when test="${empty board.manager}">
+					<td class="board-content3">${board.writer}</td>
+				</c:when>
+				<c:when test="${not empty board.manager}">
+					<td class="board-content3">${board.manager}</td>
+				</c:when>
+			</c:choose>
+			
+				<td class="board-content4">${board.reg_date}</td>
+				<td class="board-content4">${board.readcount}</td>
 			</tr>
 			
 			<c:set var="number" value="${number - 1}"></c:set>

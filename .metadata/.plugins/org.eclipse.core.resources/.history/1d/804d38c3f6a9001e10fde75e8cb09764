@@ -1,0 +1,5 @@
+package com.cgv.mapper;
+
+public interface ManagerMapper {
+
+}

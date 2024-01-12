@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgv.mapper.BoardMapper;
 import com.cgv.vo.Board;
+import com.cgv.vo.Member;
 
 @RequestMapping("/board")
 @Controller
@@ -78,8 +80,18 @@ public class BoardController extends HttpServlet {
 	}
 	
 	@GetMapping(value="/boardWriteForm.do")
-	public String boardWriteForm() {
-		return "board/boardWriteForm";
+	public String boardWriteForm(HttpSession session, Model model) {
+		
+		if( session.getAttribute("log") != null) {
+			
+			model.addAttribute("id", (String)session.getAttribute("log"));
+			
+			return "board/boardWriteForm";
+		}else {
+			return "member/loginForm";
+		}
+		
+		
 	}
     
 	@PostMapping(value = "/boardWritePro.do")
@@ -98,17 +110,31 @@ public class BoardController extends HttpServlet {
 	}
 	
 	@GetMapping(value="/boardInfo.do")
-	public String boardInfo(HttpServletRequest request, Model model) {
+	public String boardInfo(HttpSession session,HttpServletRequest request, Model model) {
+		String writer = request.getParameter("writer");
+		String log = (String)session.getAttribute("log");
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		if( writer.equals(log)) {
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			
+			mapper.updateBoardReadCount(num);
+			
+			Board board = mapper.getOneBoard(num);
+			
+			model.addAttribute(board);
+			
+			if(board.getManager() == null) {
+				return "board/boardInfo";
+			}else {
+				return "board/boardInfo2";
+			}
+			
+			
+		}else {
+			return "redirect:boardList.do";
+		}
 		
-		mapper.updateBoardReadCount(num);
-		
-		Board board = mapper.getOneBoard(num);
-		
-		model.addAttribute(board);
-		
-		return "board/boardInfo";
 	}
 	
 	@GetMapping(value="/boardUpdateForm.do")
@@ -140,32 +166,29 @@ public class BoardController extends HttpServlet {
 		return "redirect:boardList.do";
 	}
 	
-	@GetMapping(value = "/boardReWriteForm.do")
-	public String boardReWriteForm(HttpServletRequest request, Model model) {
-		
-		int num = Integer.parseInt(request.getParameter("num"));
-		
-		Board board = mapper.getOneBoard(num);
-		
-		int ref = board.getRef();
-		int re_step = board.getRe_step();
-		int re_level = board.getRe_level();
-		
-		model.addAttribute("ref", ref);
-		model.addAttribute("re_step", re_step);
-		model.addAttribute("re_level", re_level);
-		
-		return "board/boardReWriteForm";
-	}
-	
-	@PostMapping(value = "/boardReWritePro.do")
-	public String boardReWritePro(Board board) {
-		
-		mapper.updateReBoard(board);
-		mapper.reWriteBoard(board);
-		
-		return "redirect:boardList.do";
-	}
+	/*
+	 * @GetMapping(value = "/boardReWriteForm.do") public String
+	 * boardReWriteForm(HttpServletRequest request, Model model) {
+	 * 
+	 * int num = Integer.parseInt(request.getParameter("num"));
+	 * 
+	 * Board board = mapper.getOneBoard(num);
+	 * 
+	 * int ref = board.getRef(); int re_step = board.getRe_step(); int re_level =
+	 * board.getRe_level();
+	 * 
+	 * model.addAttribute("ref", ref); model.addAttribute("re_step", re_step);
+	 * model.addAttribute("re_level", re_level);
+	 * 
+	 * return "board/boardReWriteForm"; }
+	 * 
+	 * @PostMapping(value = "/boardReWritePro.do") public String
+	 * boardReWritePro(Board board) {
+	 * 
+	 * mapper.updateReBoard(board); mapper.reWriteBoard(board);
+	 * 
+	 * return "redirect:boardList.do"; }
+	 */
 	
 
 }

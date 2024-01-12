@@ -483,13 +483,27 @@ a {
 .board-content2{
 	border-bottom: 1px solid black;
 	margin: 0 auto; 
+	text-align: left;
+	background-color: #e9e9e9;
+	height: 35px;
+	font-weight:bolder;
+}
+.board-content2_1{
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
 	text-align: center;
 	background-color: #e9e9e9;
 	height: 35px;
 	font-weight:bolder;
 }
+
 .board-content3{
 	padding: 10px 0;
+	text-align: left;
+}
+.board-content4{
+	padding: 10px 0;
+	text-align: center;
 }
 
 /* 고객센터 글 조회 */
@@ -624,11 +638,206 @@ a {
 	color:#c8c8c8;
 }
 
+/* ============================ ticketingSeatForm =========================== */
+.seatSpace{
+	width: 70px;
+}
+.screeanImg{
+	height: 150px;
+	width: 400px;
+}
+.WhiteSpace{
+	height: 50px;
+}
+#seatTable{
+	width: 700px;
+	height:300px;
+	text-align: center;
+	border-spacing: 15px;
+    border-collapse: separate;
+}
+.seatNum{
+	border: solid 1px black;
+	width: 50px;
+}
+.seatNumX{
+	border: solid 1px black;
+}
 
+/* ================================= myForm =========================================*/
+.myFormName{
+	width: 1050px;
+	height:500px;
+	background: #e9e9e9;
+	margin: 0 auto;
+}
+.myForm{
+	margin: 0 auto;
+	width: 700px;
+	height:300px;
+	border-collapse: separate; 
+	border-radius: 10px;
+	border-spacing: 20px;
+}
+.myFormInfo{
+	width: 200px;
+    height: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: solid 1px black;
+    border-radius: 15px; 
+ 	text-align: center;
+}
+.myFormName{
+	font-size: 30px;
+}
 
+/* ================================== myWriteList ====================================== */
+.titleDiv{
+	width: 1050px;
+	height:100px;
+	background: #e9e9e9;
+	margin: 0 auto;
+	text-align: left;
+}
+.myWriteTable{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	width:1050px;
+}
 
+.updateTable{
+	width: 550px;
+}
 
+.upSpace{
+	height:25px;
+}
 
+/* ================================== myWriteList ======================================== */
+.ticketing-center{
+	margin: 0 auto; 
+	display: table;
+	text-align: center;
+}
+
+.myTicketingTable{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	width:1050px;
+}
+.ticketing-content2{
+	border-bottom: 1px solid black;
+	margin: 0 auto; 
+	text-align: center;
+	background-color: #e9e9e9;
+	height: 35px;
+	font-weight:bolder;
+}
+.ticketing-content3{
+	padding: 10px 0;
+}
+
+/* ====================================== managerNav ====================================== */
+.managerNav{
+	display: table;
+	width: 1050px;
+	margin: 0 auto;
+    text-align: center;
+}
+
+.managerTitle{
+	font-size: 20pt;
+}
+.managerName{
+	display:inline-block;
+	width: 150px;
+	text-align: right;
+	font-weight:bolder;
+}
+
+#managerHeader{
+	width: 1050px;
+    height: 63px;
+    margin: 0 auto;
+    text-align: center;
+    font-weight:bolder;
+    border-bottom: 2px solid red;
+}
+
+.menu{
+	cursor: pointer;
+}
+
+.menu-space{
+	width : 30px;
+}
+
+/* ================================= memberManagement =================================== */
+.memberManagement{
+	margin: 0 auto;
+    display: table;
+}
+.memberTitle{
+	text-align: center;
+	width: 900px;
+}
+
+.memberManagementTBL{
+	width: 900px;
+	border-collapse: separate;
+ 	border-spacing: 0 10px;
+}
+
+/* ================================ memberModifyForm ================================== */
+.modifyDiv{
+	display: table;
+	width: 1050px;
+	margin: 0 auto;
+    text-align: center;
+}
+.modifyTBL{
+	width: 900px;
+	border-collapse: separate;
+ 	border-spacing: 0 10px;
+}
+
+/* ================================ boardManagement =================================== */
+.boardManagement{
+	margin: 0 auto;
+    display: table;
+    text-align: center;
+}
+
+/* ================================ movieManagement =================================== */
+.movieManagement{
+	margin: 0 auto;
+    display: table;
+    text-align: center;
+}
+.movieManageTBL{
+	margin: 0 auto;
+	width: 700px;
+	height:300px;
+	border-collapse: separate; 
+	border-radius: 10px;
+	border-spacing: 20px;
+}
+.movieManage{
+	width: 150px;
+    height: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: solid 1px black;
+    border-radius: 15px; 
+ 	text-align: center;
+}
 
 
 

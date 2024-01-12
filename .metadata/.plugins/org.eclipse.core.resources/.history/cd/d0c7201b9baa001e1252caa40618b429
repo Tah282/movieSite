@@ -1,0 +1,145 @@
+package com.cgv.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cgv.mapper.MyPageMapper;
+import com.cgv.vo.Board;
+import com.cgv.vo.Member;
+import com.cgv.vo.MyBoard;
+import com.cgv.vo.MyTicketing;
+
+@RequestMapping("/myPage")
+@Controller
+public class MyPageController {
+
+	@Autowired
+	private MyPageMapper mapper;
+	
+	@GetMapping(value = "/myData")
+	public String myData(HttpServletRequest request) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		Member member = mapper.getOneMember(num);
+		System.out.println(member);
+		
+		return "mypage/myDataForm";
+	}
+	
+	@GetMapping(value = "/myWriteList.do")
+	public String loginForm(HttpServletRequest request, HttpSession session, Model model) {
+		
+		int pageSize = 5;
+		
+		int currentPage = 1;
+		int number = 1; 
+		if(request.getParameter("pageNum") != null) {
+			currentPage = Integer.parseInt(request.getParameter("pageNum"));
+			number = (currentPage-1)*pageSize+1;
+		}
+		
+		int count = mapper.getAllCount((String)session.getAttribute("log"));
+		System.out.println("count = "+count);
+		
+		int startRow = (currentPage-1)*pageSize;
+		
+		String id = (String)session.getAttribute("log");
+		List<MyBoard> myboard = mapper.getBoardList(id,startRow, pageSize);
+		System.out.println("list = "+myboard);
+			
+		int clickablePageCount = 3;
+		int pageCount = count / pageSize + (count % pageSize == 0? 0:1);
+		
+		int startPage = 0;
+		if(currentPage % clickablePageCount != 0) {
+			startPage = (currentPage / clickablePageCount) * clickablePageCount + 1;
+		}else {
+			startPage = (currentPage / clickablePageCount - 1) * clickablePageCount + 1;
+		}
+		
+		int endPage = startPage + clickablePageCount - 1;
+		if(endPage > pageCount) endPage = pageCount;
+		
+		model.addAttribute("list", myboard);
+		model.addAttribute("number", number);
+		model.addAttribute("count", count);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageSize", pageSize);
+		
+		model.addAttribute("clickablePageCount", clickablePageCount);
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+		return "myPage/myWriteList";
+	}
+	
+	@GetMapping(value="/boardInfo.do")
+	public String boardInfo(HttpServletRequest request, Model model) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		mapper.updateBoardReadCount(num);
+		
+		Board board = mapper.getOneBoard(num);
+		
+		model.addAttribute(board);
+		
+		return "myPage/boardInfo";
+	}
+	
+	@GetMapping(value="/boardUpdateForm.do")
+	public String boardUpdateForm(HttpServletRequest request, Model model) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		Board board = mapper.getOneBoard(num);
+		
+		model.addAttribute(board);
+		
+		return "myPage/updateForm";
+	}
+	
+	@PostMapping(value = "/boardUpdatePro.do")
+	public String boardUpdatePro(Board board, HttpServletRequest request) {
+
+		mapper.updateBoard(board);
+		
+		return "redirect:myWriteList.do";
+	}
+	
+	@GetMapping(value = "/boardDelete.do")
+	public String boardDelete(HttpServletRequest request) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		mapper.boardDelete(num);
+		
+		return "redirect:myWriteList.do";
+	}
+	
+	@GetMapping(value="myTicketingList.do")
+	public String myTicketingList(HttpSession session, Model model) {
+		
+		String id =  (String)session.getAttribute("log");
+		
+		List<MyTicketing> list = mapper.getTicketingList(id);
+		String name = mapper.getName(id);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("name", name);
+		
+		return "myPage/myTicketingList";
+	}
+	
+	
+}

@@ -1,0 +1,32 @@
+package com.cgv.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.cgv.vo.Board;
+import com.cgv.vo.Member;
+
+@Mapper
+public interface ManagerMapper {
+
+	/*=================== member ======================*/
+	public List<Member> getMemberList();
+	
+	public Member getOneMember(int num);
+	
+	public void updateMember(Member member);
+	
+	public void deleteMember(int num);
+
+	/*=================== board ======================*/
+	public int getAllCount();
+
+	public List<Board> getAllBoard(@Param("startRow") int startRow, @Param("pageSize") int pageSize);
+
+	public Board getOneBoard(int num);
+
+	public void boardDelete(int num);
+	
+}

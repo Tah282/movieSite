@@ -1,0 +1,36 @@
+package com.cgv.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.cgv.vo.Board;
+import com.cgv.vo.Member;
+import com.cgv.vo.MyBoard;
+import com.cgv.vo.MyTicketing;
+
+public interface MyPageMapper {
+
+	public List<MyBoard> getBoardList(@Param("id") String id,@Param("startRow") int startRow, @Param("pageSize") int pageSize);
+	
+	public int getAllCount(String id);
+	
+	public void updateBoardReadCount(int num);
+	
+	public Board getOneBoard(int num);
+	
+	public void updateBoard(Board board);
+	
+	public void boardDelete(int num);
+	
+	public List<MyTicketing> getTicketingList(String id);
+	
+	public String getName(String id);
+
+	public Member getOneMember(int num);
+	
+	public Member getOneMember2(String id);
+
+	public void updateMember(Member member);
+	
+}

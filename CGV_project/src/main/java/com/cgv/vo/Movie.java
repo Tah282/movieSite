@@ -16,4 +16,6 @@ public class Movie {
 	private String movieScreening;
 	private String movieContent;
 	private String movieTicketing;
+	private String movieCost;
+	private int movieCount;
 }

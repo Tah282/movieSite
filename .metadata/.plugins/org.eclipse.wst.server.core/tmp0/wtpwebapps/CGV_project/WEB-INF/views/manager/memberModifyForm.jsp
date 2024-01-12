@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css" />
+</head>
+<body>
+
+	<jsp:include page="managerNav.jsp" />
+
+	<div class="modifyDiv">
+		<h3> 회원 정보 수정 </h3>
+		<form action="${contextPath}/manager/memberModifyPro.do" method="post">
+			<table class="modifyTBL">
+				<tr>
+					<td>아이디 : </td> <td><input type="text" name="id" value="${member.id}"></td>
+				</tr>
+				<tr>
+					<td>비밀번호 : </td> <td><input type="text" name="pw" value="${member.pw}"></td>
+				</tr>
+				<tr>
+					<td>이름 : </td> <td><input type="text" name="name" value="${member.name}"></td>
+				</tr>
+				<tr>
+					<td>이메일 : </td> <td><input type="text" name="email" value="${member.email}"></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="num" value="${member.num}"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="수정하기"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
+

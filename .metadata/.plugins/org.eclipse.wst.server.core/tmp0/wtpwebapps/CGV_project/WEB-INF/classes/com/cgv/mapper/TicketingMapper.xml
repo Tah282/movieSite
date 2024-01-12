@@ -6,8 +6,12 @@
 		SELECT * FROM movie where movieScreening="상영중" OR movieScreening="재개봉" ORDER BY movieRating desc
 	</select>
 	
-	<select id="checkSeat" resultType="com.cgv.vo.Ticketing" parameterType="com.cgv.vo.Ticketing">
+	<select id="checkSeat" resultType="Integer" parameterType="com.cgv.vo.Ticketing">
 		SELECT seat FROM ticketing where movieNum=#{movieNum} AND theater=#{theater} AND date=#{date} ORDER BY seat 
 	</select>
+	
+	<insert id="saveTickting" parameterType="com.cgv.vo.Ticketing">
+		INSERT INTO ticketing(id,movieNum,theater,date,seat) VALUES(#{id},#{movieNum},#{theater},#{date},#{seat})
+	</insert>
 	
 </mapper>

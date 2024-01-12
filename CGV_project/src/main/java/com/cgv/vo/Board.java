@@ -15,4 +15,5 @@ public class Board {
 	private int re_level;
 	private int readcount;
 	private String content;
+	private String manager;
 }

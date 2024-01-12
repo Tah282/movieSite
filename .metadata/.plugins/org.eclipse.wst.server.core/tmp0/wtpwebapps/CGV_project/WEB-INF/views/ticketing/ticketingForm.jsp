@@ -22,7 +22,7 @@
 	<br>
 
 	<div class="center">
-		<form class="formData" action="${contextPath}/ticketing/ticketingSeatForm.do">
+		<form class="formData" action="${contextPath}/ticketing/checkData" method="post">
 			<table>
 			
 				<tr>
@@ -55,6 +55,9 @@
 				</tr>
 				
 				<tr>
+					<td><input type="hidden" id="test1" name="movieNum" value=""/></td>
+                    <td><input type="hidden" id="test2" name="theater" value=""/></td>
+                    <td><input type="hidden" id="test3" name="date" value=""/></td>
 					<td class="ticketingBtnTd"> <br> <input type="submit" value="다음으로" class=w-btn onclick="saveData()"> </td>
 				</tr>							
 					

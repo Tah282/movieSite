@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css" />
+</head>
+<body>
+	<jsp:include page="managerNav.jsp" />
+
+	<div class="movieManagement">
+		<table class="myForm">
+			<tr>
+				<td class="movieManage"><a href="${contextPath}/myPage/myData.do?num=${member.num}">영화 등록</a></td> 
+				<td class="movieManage"><a href="${contextPath}/myPage/myTicketingList.do">영화 관리</a></td> 
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

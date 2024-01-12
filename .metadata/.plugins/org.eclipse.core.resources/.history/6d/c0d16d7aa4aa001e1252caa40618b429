@@ -1,0 +1,65 @@
+package com.cgv.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cgv.mapper.ManagerMapper;
+import com.cgv.vo.Member;
+
+@RequestMapping("/manager")
+@Controller
+public class ManagerController {
+	
+	@Autowired
+	private ManagerMapper mapper;
+	
+	@GetMapping(value="/memberManagement.do")
+	public String memberList(Model model) {
+		
+		List<Member> list = mapper.getMemberList();
+		
+		model.addAttribute("list", list);
+		
+		return "manager/memberManagement";
+	}
+	
+	@GetMapping(value="/modify.do")
+	public String modify(Model model, HttpServletRequest request) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		Member member =  mapper.getOneMember(num);
+		
+		model.addAttribute( "member", member );
+		
+		return "manager/memberModifyForm";
+	}
+	
+	@PostMapping(value="/memberModifyPro.do")
+	public String memberModifyPro(Model model, Member member) {
+		
+		System.out.println(member);
+		mapper.updateMember(member);
+		
+		return "manager/memberModifyPro";
+	}
+	
+	@GetMapping(value="/delete.do")
+	public String deleteMember(Model model, HttpServletRequest request) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		mapper.deleteMember(num);
+				
+		return "manager/memberDeletePro";
+	}
+	
+}

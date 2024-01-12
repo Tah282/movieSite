@@ -1,0 +1,35 @@
+package com.cgv.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cgv.mapper.ManagerMapper;
+import com.cgv.vo.Member;
+
+@RequestMapping("/manager")
+@Controller
+public class ManagerController {
+	
+	@Autowired
+	private ManagerMapper mapper;
+	
+	@GetMapping(value="/memberManagement.do")
+	public String memberList(Model model) {
+		
+		List<Member> list = mapper.getMemberList();
+		
+		model.addAttribute("list", list);
+		
+		return "manager/memberManagement";
+	}
+	
+
+	
+}

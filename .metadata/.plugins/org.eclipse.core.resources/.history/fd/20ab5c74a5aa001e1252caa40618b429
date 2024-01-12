@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cgv.mapper.ManagerMapper">
+	
+	<select id="getMemberList" resultType="com.cgv.vo.Member">
+		SELECT * FROM member 
+	</select>
+	
+	<select id="getOneMember" parameterType="Integer" resultType="com.cgv.vo.Member">
+		SELECT * FROM member WHERE num=#{num}
+	</select>
+	
+	<update id="updateMember" parameterType="com.cgv.vo.Member">
+		UPDATE member SET id=#{id}, pw=#{pw}, name=#{name}, email=#{email}
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="deleteMember" parameterType="Integer">
+		DELETE FROM member WHERE num=#{num}
+	</delete>
+	
+	
+	
+	<select id="getAllCount" resultType="Integer">
+		SELECT count(*) FROM board
+	</select>
+	
+	<select id="getAllBoard" parameterType="com.cgv.vo.Board" resultType="com.cgv.vo.Board">
+		SELECT * FROM board 
+		ORDER BY ref DESC, re_level LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+</mapper>

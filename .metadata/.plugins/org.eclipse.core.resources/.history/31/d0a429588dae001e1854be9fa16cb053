@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cgv.mapper.MyPageMapper">
+	
+	<select id="getOneMember" parameterType="Integer" resultType="com.cgv.vo.Member">
+		SELECT * FROM member WHERE num=#{num}
+	</select>
+	
+	<update id="updateMember" parameterType="com.cgv.vo.Member">
+		UPDATE member SET id=#{id}, pw=#{pw}, name=#{name}, email=#{email}
+		WHERE num=#{num}
+	</update>
+	
+	<select id="getBoardList" parameterType="map" resultType="com.cgv.vo.MyBoard">
+		SELECT member.name, board.* from board left join member on board.writer = member.id where member.id = #{id} ORDER BY ref DESC, re_level LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getAllCount" parameterType="String" resultType="Integer">
+		SELECT count(*) from board left join member on board.writer = member.id where member.id = #{id}
+	</select>
+	
+	<update id="updateBoardReadCount" parameterType="int">
+		UPDATE board SET readcount = readcount+1 WHERE num = #{num}
+	</update>
+	
+	<select id="getOneBoard" parameterType="int" resultType="com.cgv.vo.Board">
+		SELECT * FROM board WHERE num = #{num}
+	</select>
+	
+	<update id="updateBoard" parameterType="com.cgv.vo.Board">
+		UPDATE board SET email=#{email}, subject=#{subject}, content=#{content} 
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="boardDelete" parameterType="Integer">
+		DELETE FROM board WHERE num=#{num}
+	</delete>
+	
+	<select id="getTicketingList" parameterType="String" resultType="com.cgv.vo.MyTicketing">
+		SELECT movie.movieName, ticketing.* from ticketing left join movie on ticketing.movieNum = movie.num where ticketing.id = #{id} order by date desc , num desc , seat
+	</select>
+	
+	<select id="getName" parameterType="String" resultType="String">
+		SELECT name FROM member WHERE id = #{id}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+	
+
+

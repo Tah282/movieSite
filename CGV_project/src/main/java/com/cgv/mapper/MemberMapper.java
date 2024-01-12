@@ -2,6 +2,7 @@ package com.cgv.mapper;
 
 import java.util.List;
 
+import com.cgv.vo.Manager;
 import com.cgv.vo.Member;
 
 public interface MemberMapper {
@@ -12,9 +13,10 @@ public interface MemberMapper {
 	
 	public void memberJoin(Member member);
 	
-	public List<Member> getMemberList();
-	
-	public Member getMember(String id);
-	
 	public void updateMember(Member member); 
+	
+	public List<Member> getMemberList();	
+	
+	public Manager checkManager(Manager manager);
+	
 }

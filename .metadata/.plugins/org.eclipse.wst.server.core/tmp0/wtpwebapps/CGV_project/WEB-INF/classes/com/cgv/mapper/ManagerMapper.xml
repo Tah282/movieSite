@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cgv.mapper.ManagerMapper">
+	
+							<!-- member -->
+	
+	<select id="getMemberList" resultType="com.cgv.vo.Member">
+		SELECT * FROM member 
+	</select>
+	
+	<select id="getOneMember" parameterType="Integer" resultType="com.cgv.vo.Member">
+		SELECT * FROM member WHERE num=#{num}
+	</select>
+	
+	<update id="updateMember" parameterType="com.cgv.vo.Member">
+		UPDATE member SET id=#{id}, pw=#{pw}, name=#{name}, email=#{email}
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="deleteMember" parameterType="Integer">
+		DELETE FROM member WHERE num=#{num}
+	</delete>
+	
+							<!-- board -->
+	
+	<select id="getAllCount" resultType="Integer">
+		SELECT count(*) FROM board
+	</select>
+	
+	<select id="getAllBoard" parameterType="com.cgv.vo.Board" resultType="com.cgv.vo.Board">
+		SELECT * FROM board 
+		ORDER BY ref DESC, re_level LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<select id="getOneBoard" parameterType="int" resultType="com.cgv.vo.Board">
+		SELECT * FROM board WHERE num = #{num}
+	</select>
+	
+	<select id="getOneManager" parameterType="String" resultType="String">
+		SELECT name FROM manager WHERE id = #{id}
+	</select>
+	
+	<delete id="boardDelete" parameterType="Integer">
+		DELETE FROM board WHERE num=#{num}
+	</delete>
+	
+	<update id="updateReBoard" parameterType="com.cgv.vo.Board">
+		UPDATE board SET re_level=re_level+1 WHERE ref=#{ref} AND re_level > #{re_level}
+	</update>
+	
+	<insert id="reWriteBoard" parameterType="com.cgv.vo.Board">
+		INSERT INTO board (writer, email, subject, reg_date, ref, re_step, re_level, readcount, content, manager)
+		VALUES(#{writer}, #{email}, #{subject}, now(), #{ref}, #{re_step} + 1, #{re_level} + 1, 0, #{content}, #{manager})
+	</insert>
+	
+							<!-- movie -->
+				
+	<insert id="insertMovie" parameterType="com.cgv.vo.Movie">
+		INSERT INTO movie (movieDirector, movieTime, movieContent, movieScreening, movieAge, movieCharacter, movieOpen, movieCost, movieName, movieImage) 
+		VALUES(#{movieDirector}, #{movieTime}, #{movieContent}, #{movieScreening}, #{movieAge}, #{movieCharacter}, #{movieOpen}, #{movieCost}, #{movieName}, #{movieImage})
+	</insert>
+	
+</mapper>

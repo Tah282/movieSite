@@ -39,8 +39,9 @@
 				<td colspan="4">
 					<input type="button" value="수정하기" onclick="location.href='${contextPath}/board/boardUpdateForm.do?num=${board.num}'">
 					<input type="button" value="삭제하기" onclick="location.href='${contextPath}/board/boardDelete.do?num=${board.num}'">
-					<input type="button" value="답글쓰기" onclick="location.href='${contextPath}/board/boardReWriteForm.do?num=${board.num}'">
 					<input type="button" value="목록보기" onclick="location.href='${contextPath}/board/boardList.do'" >
+					<input type="button" value="뒤로가기" onclick="history.back()" >
+					<%-- <input type="button" value="답글쓰기" onclick="location.href='${contextPath}/board/boardReWriteForm.do?num=${board.num}'"> --%>			
 				</td>
 			</tr>
 			<tr>

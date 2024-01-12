@@ -14,6 +14,10 @@
 		INSERT INTO member(id,pw,email,name) VALUES(#{id},#{pw},#{email},#{name})
 	</insert>
 	
+	<select id="checkManager" parameterType="com.cgv.vo.Manager" resultType="com.cgv.vo.Manager">
+		SELECT * FROM manager WHERE id=#{id} AND pw=#{pw}
+	</select>
+	
 </mapper>
 
 

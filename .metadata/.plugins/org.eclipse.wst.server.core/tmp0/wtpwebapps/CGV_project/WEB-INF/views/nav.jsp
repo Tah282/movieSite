@@ -30,15 +30,15 @@
 	<table id="headerTable2">
         <tr>
         	<td class="header2-menu">
-        		<a href="${contextPath}/movie/movieTotalList.do">영화</td>
+        		<a href="${contextPath}/movie/movieTotalList.do">영화</a></td>
 	        <td class="header2-menu">
-	        	<a href="${contextPath}/movie/cinemaForm.do">극장</td>
+	        	<a href="${contextPath}/movie/cinemaForm.do">극장</a></td>
 	        <td class="header2-menu">
-	        	<a href="${contextPath}/ticketing/ticketingForm.do">예매</td>
+	        	<a href="${contextPath}/ticketing/ticketingForm.do">예매</a></td>
 	        <td class="header2-menu">
-	        	<a href="${contextPath}/shop/storeForm.do">스토어</td>
+	        	<a href="${contextPath}/shop/storeForm.do">스토어</a></td>
 	        <td class="header2-menu">
-	        	<a href="${contextPath}/member/joinForm.do">이벤트</td>
+	        	<a href="${contextPath}/member/joinForm.do">이벤트</a></td>
 	        <td class="header2-space"></td>
 	        <td class="header2-search"><input type="text">  <a><img src="${contextPath}/resources/image/search.png" class="searchLogo"></a></td>
         </tr>

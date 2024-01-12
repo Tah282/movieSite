@@ -12,6 +12,6 @@ import com.cgv.vo.Ticketing;
 public interface TicketingMapper {
 	
 	public List<Movie> getMovieList();
-	public List<Ticketing> checkSeat(Ticketing ticketing);
-	
+	public List<Integer> checkSeat(Ticketing ticketing);
+	public void saveTickting(Ticketing ticketing);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cgv.mapper.MemberMapper;
+import com.cgv.vo.Manager;
 import com.cgv.vo.Member;
 
 @RequestMapping("/member")
@@ -25,16 +26,28 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/loginPro.do")
-	public String loginPro(HttpSession session, Member member, Model model) {
+	public String loginPro(HttpSession session, Member member, Manager manager , Model model) {
 		
 		Member check = mapper.checkMember(member);
+		Manager mgCheck = mapper.checkManager(manager);
 		
-		session.setAttribute("log", member.getId() );
+		if(check != null) {
+			session.setAttribute("log", member.getId() );
+			model.addAttribute("id", member.getId());
+			model.addAttribute("check", check);
+			
+			return "member/loginPro";
+		}else if(mgCheck != null) {
+			session.setAttribute("log", manager.getId() );
+			model.addAttribute("id", manager.getId());
+			model.addAttribute("manager", mgCheck);
+			
+			return "manager/main";
+		}else {
+			return "member/loginPro";
+		}
+			
 		
-		model.addAttribute("id", member.getId());
-		model.addAttribute("check", check);
-		
-		return "member/loginPro";
 	}
 	
 	@GetMapping(value = "/logout.do")
@@ -64,6 +77,20 @@ public class MemberController {
 		model.addAttribute("check", check);
 		
 		return "member/joinPro";
+	}
+	
+	@GetMapping(value = "/myForm.do")
+	public String myForm(HttpSession session, Model model) {
+		
+		if(session.getAttribute("log") != null) {
+			Member member = mapper.checkMemberId((String)session.getAttribute("log"));
+			
+			model.addAttribute("member", member);
+			
+			return "member/myForm";
+		}else {
+			return "member/loginForm";
+		}
 	}
 
 }

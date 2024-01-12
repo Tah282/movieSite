@@ -45,7 +45,7 @@ function theaterSave(data){
 //------------------------- 날짜 선택 --------------------------------------
 let monthList = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 let dayList = ["일", "월", "화", "수", "목", "금", "토"];
-let today = new Date();
+let today = new Date(); console.log("today = "+today);
 let todayDay = today.getDate(); 
 let thisMonth = null;
 let thisYear = null;
@@ -53,19 +53,21 @@ let thisYear = null;
 function YearMonth(){
 	let thisYear = today.getFullYear();
     let thisMonth = today.getMonth();
-
+	console.log("thisYear = "+thisYear);
+	console.log("thisMonth = "+thisMonth);
+	
 	makeDateDiv(thisYear,thisMonth);
 }
 
 function makeDateDiv(year , month){
-	thisMonth = month;
-	thisYear = year;
-	//----------------- 테이블 만들기 ----------------------
+	thisMonth = month; 	//2023
+	thisYear = year;	//11  12월인데 인덱스로 출력되서
+	//테이블 만들기 
 	let listHtml = ``;
 	let count = 0;
 	
 	listHtml +=`
-		<h3>${month}월</h3>
+		<h3>${month+1}월</h3>
 		<table class="dateTable">
 			<tr>
 	`;	
@@ -85,7 +87,7 @@ function makeDateDiv(year , month){
 	listHtml += `</table>`;
 	$(".dateDiv").html(listHtml);
 	
-	//----------- 날짜 계산하기 --------------
+	//날짜 계산하기 
 	let total = 0;
 	let lastYear = year - 1;
 	total += lastYear * 365;
@@ -125,38 +127,51 @@ function makeDateDiv(year , month){
 }
 
 function dateSave(data){
-	date = thisMonth+"월 "+data+"일";
+	date = (thisMonth+1)+"월 "+data+"일";
 	console.log("date = "+date);
 }
 
 function saveData(){
-	let formData = document.querySelector(".formData");
-		
-	var query = {
-		movieNum :  movieNum,
-		theater : theater,
-		date : date
-	};	
-		
-	$.ajax({
-		url: "checkData",
-		type: "post",
-		data : query,
-		success : function(data){
-			
-			
-		},
-		error: function() { alert("saveData error!"); }
-	});
+    document.getElementById("test1").value = movieNum;
+    document.getElementById("test2").value = theater;
+    document.getElementById("test3").value = date;	
+}
+
+//-------------------------------------- 좌석 선택 --------------------------------------------------
+let seatList = []; 
+
+function checkSeat(index){
+	console.log("index = "+index);
+	let seatNumList = document.querySelectorAll(".seatNum");
 	
-	/*
-	$.ajax({
-			async: false,
-			url: "checkData",
-			type: "post",
-			data : query,
-			success : function() { window.location.href="";}, //sucess : window.location.href="경로?list=${list}"
-			error: function() { alert("openCount error"); }
-		})
-	*/
+	for(let i=0; i<seatNumList.length; i++){
+		if(i==index){
+			if(seatList.indexOf(i+1)<0){ //포함하는 값 없으면 -1리턴
+				seatNumList[i].style.backgroundColor = "#ff7b5a";
+				seatList.push(i+1);
+			}else{
+				seatNumList[i].style.backgroundColor = "white";
+				for(let j=0; j<seatList.length;j++){
+					if(seatList[j]==i+1){
+						seatList.splice(j,1);
+						break;
+					}
+				}		
+			}
+			break;
+		}
+	}
+	
+	console.log("seatList = "+seatList);
+}
+
+function saveData2(){
+	
+	let seatNumList = document.querySelectorAll(".seatNumClass");
+
+	for(let i=0; i<seatList.length; i++){
+		seatNumList[seatList[i]-1].value = seatList[i];
+		console.log(seatNumList[seatList[i]-1]);
+	}
+
 }
